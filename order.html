@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8" />
+    <title>Explore the World - הזמן חופשה</title>
+    <meta name="description" content="טופס הזמנת חופשה" />
+    <meta name="keywords" content="חופשה, טיול בברזיל, טיסה לדובאי,נופש באיטליה" />
+    <meta name="author" content="רוני כהן, תאיר ואלחנן חזן HIT" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="styles/reset.css" rel="stylesheet" />
+    <link href="styles/myStyle.css" rel="stylesheet" />
+    <link rel="icon" href="image/favicon_logo.png" />
+
+    <!-- JS -->
+    <script src="jScripts/jquery-1.12.0.min.js"></script>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="index.html">דף הבית</a></li>
+                <li>
+                    <a href="#">טיפים למטייל</a>
+                    <ul class="sub-menu">
+                        <li><a href="beforfly.html">לפני טיסה</a></li>
+                        <li><a href="#" class="disabled">אטרקציות</a></li>
+                        <li><a href="#" class="disabled">אפליקציות</a></li>
+                        <li><a href="#" class="disabled">ביטוחים</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">יעדים</a>
+                    <ul class="sub-menu">
+                        <li><a href="#" class="disabled">אסיה</a></li>
+                        <li><a href="#" class="disabled">אמריקה</a></li>
+                        <li><a href="europe.html">אירופה</a></li>
+                    </ul>
+                </li>
+                <li><a href="order.html">הזמן חופשה</a></li>
+                <li>
+                </li>
+                <li><a href="contactus.html">צרו קשר</a></li>
+                <li>
+                    <a href="aboutus.html">אודותינו</a>
+                    <ul class="sub-menu">
+                        <li><a href="sitemap.html">מפת האתר </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- Bread_Menu Navigation -->
+        <nav aria-label="Bread_menu">
+            <ol class="breadMenu">
+                <li><a href="index.html">דף הבית</a></li>
+                <li>הזמן חופשה</li>
+            </ol>
+        </nav>
+        <body>
+            <div class="containerb">
+                <h2 class="title">תכנון חופשה אישית</h2>
+
+                <!-- פרטים אישיים -->
+                <div class="section">
+                    <div class="section-title">פרטים אישיים</div>
+                    <div class="option-group">
+                        <label for="fullName">שם מלא:</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="הכנס שם מלא" oninput="checkFormCompletion()">
+
+                        <label for="comments">הערות להזמנה:</label>
+                        <textarea id="comments" name="comments" placeholder="הכנס הערות אם יש..."></textarea>
+                    </div>
+                </div>
+
+                <!-- בחירת יעד -->
+                <div class="section">
+                    <div class="section-title">בחר יעד</div>
+                    <div class="option-group radio-container">
+                        <label><input type="radio" id="dubai" name="destination" value="דובאי" onchange="DestinationIcon('dubai'); checkFormCompletion()"> דובאי <span id="icon-dubai" class="destination-icon"><i class="fas fa-umbrella-beach"></i></span></label>
+                        <label><input type="radio" id="italy" name="destination" value="איטליה" onchange="DestinationIcon('italy'); checkFormCompletion()"> איטליה <span id="icon-italy" class="destination-icon"><i class="fas fa-pizza-slice"></i></span></label>
+                        <label><input type="radio" id="brazil" name="destination" value="ברזיל" onchange="DestinationIcon('brazil'); checkFormCompletion()"> ברזיל <span id="icon-brazil" class="destination-icon"><i class="fas fa-futbol"></i></span></label>
+                    </div>
+                </div>
+
+                <!-- בחירת מספר מטיילים -->
+                <div class="section">
+                    <div class="section-title">בחר מספר מטיילים</div>
+                    <div class="option-group">
+                        <label for="travelers">מספר מטיילים:</label>
+                        <select id="travelers" name="travelers">
+                            <option value="">-- בחר מספר --</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- בחירת תחומי עניין -->
+                <div class="section">
+                    <div class="section-title">תחומי עניין ביעד</div>
+                    <div class="option-group">
+                        <label>
+                            <input type="checkbox" name="interests" value="מסעדות" onchange="highlightImages()"> מסעדות
+                            <img src="image/restaurant.jpg" class="interest-image" id="image-מסעדות" alt="מסעדות">
+                        </label>
+                        <label>
+                            <input type="checkbox" name="interests" value="קניות" onchange="highlightImages()"> קניות
+                            <img src="image/shopping.jpg" class="interest-image" id="image-קניות" alt="קניות">
+                        </label>
+                        <label>
+                            <input type="checkbox" name="interests" value="אתרים מקומיים" onchange="highlightImages()"> אתרים מקומיים
+                            <img src="image/local_sites.jpg" class="interest-image" id="image-אתרים מקומיים" alt="אתרים מקומיים">
+                        </label>
+                        <label>
+                            <input type="checkbox" name="interests" value="סיורים וטיולים" onchange="highlightImages()"> סיורים וטיולים
+                            <img src="image/tours.jpg" class="interest-image" id="image-סיורים וטיולים" alt="סיורים וטיולים">
+                        </label>
+                        <label>
+                            <input type="checkbox" name="interests" value="ספא" onchange="highlightImages()"> ספא
+                            <img src="image/spa.jpg" class="interest-image" id="image-ספא" alt="ספא">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- כפתור שליחה -->
+                <button type="button" id="submitBtn" class="submit-btn disabled" onclick="showSummary()" disabled>אישור</button>
+
+                <!-- סיכום הזמנה -->
+                <div id="summary" class="hidden"></div>
+            </div>
+
+            <script src="jScripts/JavaScript.js"></script>
+        </body>
+
+
+
+
+
+
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2024 Explore the World | כל הזכויות שמורות</p>
+            </div>
+            <div class="footer-nav">
+                <a href="index.html">דף הבית</a> |
+                <a href="aboutus.html">אודותינו</a> |
+                <a href="contactus.html">צרו קשר</a>
+            </div>
+        </footer>
+    </body>
+</html>

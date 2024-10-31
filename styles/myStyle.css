@@ -1,0 +1,965 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    
+    font-family: 'Playfair Display', serif;
+    direction: rtl;
+    background-color: #D2C7B5; /* צבע הרקע לכל האתר */
+}
+
+header {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.header-image {
+    width: 100vw;
+    height: 60vh;
+    object-fit: cover;
+    opacity: 0.7;
+    position: relative; /* מאפשר לתמונה להיות מתחת לסרגל */
+    top: 0; /* מתחיל מ-0 למעלה */
+}
+
+.logo {
+    position: absolute; /* מאפשר למקם את הלוגו על התמונה */
+    right: 20px; /* המרחק מהצד הימני */
+    top: 40%; /* מיקום האנכית של הלוגו */
+    color: white; /* צבע הלוגו */
+    font-size: 3.5em; /* גודל הפונט עבה יותר */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* הוספת צל לטקסט */
+    font-weight: bold; /* הופך את הפונט לעבה יותר */
+}
+nav ol li {
+    display: inline-block;
+}
+
+    nav ol li:after {
+        content: " > ";
+    }
+
+    nav ol li:last-child:after {
+        content: "";
+    }
+
+nav ul li:hover a {
+    font-weight: bold; /* הפוך את הטקסט למודגש */
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 15px;
+    text-align: center;
+    z-index: 1;
+}
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+    }
+
+        nav ul li {
+            position: relative;
+        }
+
+            nav ul li a {
+                color: #333;
+                text-decoration: none;
+                font-size: 1.2em;
+                padding: 10px; /* מרווח סביב הלינק */
+            }
+
+.sub-menu {
+    display: none; /* הסתרת תתי הקטגוריות */
+    position: absolute;
+    background-color: #C4A484; /* צבע הרקע של תתי הקטגוריות */
+    border-radius: 5px; /* פינות מעוגלות */
+    z-index: 2; /* כדי שהתפריט יופיע מעל */
+  
+}
+
+nav ul li:hover .sub-menu {
+    display: block; /* מציג את תתי הקטגוריות כשעוברים עם העכבר */
+}
+
+.sub-menu li {
+    padding: 10px; /* מרווח פנימי לתתי הקטגוריות */
+    transition: background-color 0.3s;
+}
+
+    .sub-menu li:hover {
+        background-color: #A26D4D; /* צבע חום בעת מעבר על תתי הקטגוריות */
+        color: white; /* צבע טקסט לבן בעת מעבר */
+    }
+
+nav ul li a.disabled {
+    cursor: not-allowed; /* משנה את צורת העכבר לסימן חסימה */
+    color: black; /* שומר על צבע הקישור הרגיל */
+    text-decoration: none; /* מבטל קו תחתון */
+}
+
+    nav ul li a.disabled:hover {
+        pointer-events: none; /* מונע אינטראקציה עם הקישור */
+        text-decoration: none; /* מבטל קו תחתון בעת ריחוף */
+    }
+.sub-menu li a {
+    padding: 10px 15px;
+    display: block;
+    color: #333;
+    white-space: nowrap; /* מבטיח שהטקסט לא ישבור שורה */
+    text-align: center; /* מיישר את הטקסט למרכז */
+}
+nav[aria-label="Bread_menu"] {
+    margin-top: 40px; /* שנה את הערך לפי הצורך */
+    text-align: right;
+    background-color: transparent;
+}
+
+.cta {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #C4A484;
+    color: white;
+    font-size: 1.5em;
+    text-decoration: none;
+    border-radius: 5px; /* כאן התיקון */
+}
+
+.about-us {
+    padding: 20px;
+    text-align: center;
+    margin: 20px auto; /* מרכז את הפסקה */
+    max-width: 800px; /* רוחב מקסימלי לפסקה */
+}
+
+.highlighted-title {
+    font-size: 2.5em; /* גודל כותרת */
+    color: #333; /* צבע הכותרת */
+    margin-bottom: 10px; /* מרווח מתחת לכותרת */
+    font-weight: bold; /* הופך את הפונט לעבה יותר */
+}
+
+.about-content {
+    background-color: rgba(255, 255, 255, 0.8); /* צבע רקע בהיר לפסקה */
+    padding: 20px; /* מרווחים פנימיים */
+    border-radius: 10px; /* פינות מעוגלות לריבוע */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* הוספת צל לריבוע */
+}
+
+    .about-content p {
+        font-size: 1.2em; /* גודל הטקסט */
+        line-height: 1.6; /* מרווח בין שורות */
+        color: #555; /* צבע הטקסט */
+    }
+
+.about-container {
+    display: flex; /* מציב את התמונה והמלל זה לצד זה */
+    align-items: center; /* מרכז את התמונה והמלל אנכית */
+    justify-content: center; /* מרכז את התמונה והמלל אופקית */
+    margin: 20px auto; /* מרכז את הקונטיינר כולו */
+    max-width: 1200px; /* רוחב מקסימלי לתיבה */
+}
+
+.about-image {
+    width: 30%; /* התמונה תיקח 30% מהקונטיינר */
+    height: auto; /* שומר על יחס הגובה-רוחב של התמונה */
+    border-radius: 10px; /* פינות מעוגלות לתמונה */
+    margin-right: 20px; /* מרווח בין התמונה לטקסט */
+}
+
+.about-us {
+    width: 60%; /* תיבת המלל תיקח 60% מהקונטיינר */
+    text-align: right; /* ממקם את הטקסט לימין */
+}
+
+.about-content {
+    background-color: rgba(255, 255, 255, 0.8); /* צבע רקע בהיר לפסקה */
+    padding: 20px; /* מרווחים פנימיים */
+    border-radius: 10px; /* פינות מעוגלות לריבוע */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* הוספת צל לריבוע */
+}
+
+.highlighted-title {
+    font-size: 2.5em; /* גודל כותרת */
+    color: #333; /* צבע הכותרת */
+    margin-bottom: 10px; /* מרווח מתחת לכותרת */
+    font-weight: bold; /* הופך את הפונט לעבה יותר */
+}
+
+.features {
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* מתאם את הכרטיסיות למסכים שונים */
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #C4A484; /* צבע רקע לכרטיסים */
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 220px; /* רוחב קבוע לכרטיסים */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+    .card h3 {
+        font-size: 1.5em; /* גודל כותרת */
+        margin-bottom: 10px;
+        color: white; /* צבע טקסט לכותרת */
+    }
+
+    .card p {
+        font-size: 1em; /* גודל הטקסט */
+        color: white; /* צבע טקסט לתוכן */
+    }
+
+.gallery {
+    text-align: center;
+    margin: 40px 0;
+    background-color: #D2C7B; /* הצבע החום אחיד לרקע */
+    padding: 20px; /* מרווח פנימי */
+    border-radius: 10px; /* פינות מעוגלות */
+}
+
+    .gallery h2 {
+        font-size: 2em; /* גודל כותרת */
+        margin-bottom: 20px; /* מרווח מתחת לכותרת */
+        font-weight: bold; /* עבה */
+        color: black; /* צבע טקסט */
+    }
+
+.gallery-images {
+    display: grid; /* מציג את התמונות כרשת */
+    grid-template-columns: repeat(5, 1fr); /* קובע חמישה עמודות */
+    gap: 10px; /* מרווח בין התמונות */
+    border-radius: 15px
+}
+
+.gallery-item {
+    overflow: hidden; /* חוסם את התמונה מעבר לגבולות */
+    border-radius: 10px; /* פינות מעוגלות */
+}
+
+.gallery-image {
+    width: 100%; /* תמונה ממלאה את כל הרוחב */
+    height: 200px; /* גובה קבוע לתמונות כדי להשיג אחידות */
+    object-fit: cover; /* חיתוך התמונה כדי להתאים לריבוע */
+    display: block; /* מבטיח שאין רווחים מתחת לתמונה */
+    border-radius: 10px; /* פינות מעוגלות */
+}
+
+   
+
+
+h3 {
+    text-align: center; /* מרכז את הטקסט */
+    margin: 20px 0; /* רווחים למעלה ולמטה */
+    font-size: 24px; /* גודל הפונט */
+    font-weight: bold; /* עבה */
+}
+
+
+.title-container {
+    display: flex;
+    flex-direction: column; /* מציב את התוכן בעמודה */
+    align-items: center; /* ממקם את התוכן במרכז */
+    margin-bottom: 20px; /* רווח מתחת לקונטיינר */
+}
+
+
+
+
+
+.europe-info {
+    text-align: center; /* מרכז את התוכן */
+    margin: 0; /* ללא מרווחים חיצוניים */
+}
+
+.europe-map {
+    width: 100%; /* רוחב מלא */
+    height: 45vh; /* גובה מותאם */
+    object-fit: cover; /* חיתוך התמונה */
+    margin-top: 0; /* ללא מרווחים מעל התמונה */
+    border-radius: 15px;
+}
+
+.europe-title {
+    font-size: 4em; /* גודל הכותרת */
+    color: white; /* צבע הלבן לכותרת */
+    margin: 1px 0; /* מרווחים למעלה ולמטה */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* הצללה מתחת לכותרת */
+    position: relative; /* מאפשר למקם את הכותרת */
+    z-index: 1; /* מבטיח שהכותרת תצא מעל לתמונה */
+}
+
+.europe-paragraph {
+    margin: 40px auto; /* מרווחים למעלה ולמטה */
+    max-width: 800px; /* רוחב מקסימלי לפסקה */
+    color: #333; /* צבע טקסט לפסקה */
+    font-size: 1.2em; /* גודל הטקסט */
+    padding: 20px; /* מרווח פנימי */
+    background-color: rgba(255, 255, 255, 0.8); /* צבע רקע בהיר חצי שקוף לכרטיסייה */
+    border-radius: 10px; /* פינות מעוגלות לכרטיסייה */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* הוספת צל לכרטיסייה */
+}
+
+.flag-list {
+    list-style: none; /* מסיר את הסימנים לפני הרשימה */
+    display: flex; /* מציג את הדגלים בשורה */
+    justify-content: center; /* מרכז את הדגלים */
+    flex-wrap: wrap; /* מאפשר לשבור שורות אם צריך */
+    padding: 0; /* מסיר רווחים פנימיים */
+}
+
+    .flag-list li {
+        margin: 10px; /* רווח בין הדגלים */
+        text-align: center; /* מרכז את הטקסט מתחת לדגל */
+    }
+
+.flag-image {
+    width: 100px; /* רוחב קבוע לדגלים */
+    height: auto; /* גובה אוטומטי כדי לשמור על פרופורציות */
+    border-radius: 5px; /* פינות מעוגלות */
+}
+
+.flags h2 {
+    font-size: 1.5em; /* גודל הכותרת */
+    color: white; /* צבע טקסט */
+    text-align: center; /* מרכז את הכותרת */
+    margin: 20px 0; /* רווחים למעלה ולמטה */
+    text-transform: uppercase; /* הופך את הטקסט לאותיות רישיות */
+    letter-spacing: 1px; /* רווח בין אותיות */
+    font-weight: bold; /* עושה את הטקסט מודגש */
+    border-bottom: 2px solid #D2C7B; /* קו תחתון צבעוני */
+    padding-bottom: 10px; /* רווח מתחת לכותרת */
+}
+
+.flag-list {
+    list-style: none; /* מסיר את הסימון מהליסט */
+    padding: 0; /* מסיר את הרווחים הפנימיים */
+    display: flex; /* מציג את הפריטים בשורה */
+    flex-wrap: wrap; /* מאפשר לפריטים לעבור לשורה הבאה */
+    justify-content: center; /* מרכז את הפריטים */
+}
+
+    .flag-list li {
+        margin: 15px; /* מרווח בין הדגלים */
+        text-align: center; /* מרכז את הטקסט מתחת לדגל */
+        transition: transform 0.3s ease; /* מעבר חלק בעת אנימציה */
+    }
+
+        .flag-list li:hover {
+            transform: scale(1.1); /* מגדיל את הדגל בעת מעבר עכבר */
+        }
+
+        .flag-list li img {
+            width: 100px; /* רוחב קבוע לדגלים */
+            height: auto; /* גובה אוטומטי */
+            border-radius: 8px; /* פינות מעוגלות לדגלים */
+        }
+        .flag-list li a {
+            color: #333; /* צבע טקסט כהה לדגל של איטליה */
+            text-decoration: none; /* ללא קו תחתון */
+            transition: color 0.3s ease; /* אנימציה על שינוי צבע */
+        }
+
+    .flag-list li {
+        display: inline-block; /* מוודא שהדגלים יישארו באותה שורה */
+        margin: 10px; /* רווח בין הדגלים */
+    }
+
+.flag-image {
+    width: 100px; /* גובה קבוע לדגלים */
+    height: auto; /* יחס גובה-רוחב שמירה */
+}
+
+.flag-list li:hover {
+    cursor: pointer; /* עכבר כמחוון מעל הדגל */
+}
+
+.flag-list li:not(:first-child):hover {
+    cursor: not-allowed; /* עכבר חוסם על דגלים שלא איטליה */
+}
+
+.welcome-italy {
+    text-align: center; /* מרכז את התוכן */
+    margin: 20px; /* מרווחים סביב הסקשן */
+   
+}
+
+.welcome-title {
+    text-align: center;
+    font-size: 3em; /* גודל הכותרת */
+    margin-bottom: 20px; /* מרווח מתחת לכותרת */
+}
+
+.image-row {
+    display: flex; /* מאפשר תמונות בשורה */
+    justify-content: center; /* מרכז את התמונות */
+    margin: 20px 0; /* מרווח מעל ומתחת לשורות התמונות */
+}
+
+.italy-image {
+    width: 45%; /* רוחב כל תמונה, אפשר להתאים לפי הצורך */
+    margin: 0 10px; /* מרווח בין התמונות */
+    border-radius: 15px;
+}
+
+.welcome-content {
+   
+    font-size: 1.4em; /* גודל הטקסט */
+    margin: 20px; /* מרווח סביב הפסקה */
+}
+
+.italy-regions {
+    margin: 20px;
+    text-align: center; /* מרכז את הכותרת */
+}
+
+.regions-title {
+    font-size: 2.5em; /* גודל הכותרת */
+    color: #333; /* צבע הכותרת */
+    margin-bottom: 20px; /* מרווח מתחת לכותרת */
+}
+
+.card-container {
+    display: flex; /* מציב את הכרטיסים זה ליד זה */
+    flex-wrap: wrap; /* מאפשר למלא שורות נוספות */
+    justify-content: space-around; /* מפזר את הכרטיסים */
+}
+
+.card {
+    background-color: rgba(173, 216, 230, 0.9); /* רקע בהיר עם שקיפות */
+    border-radius: 10px; /* פינות מעוגלות */
+    padding: 20px; /* מרווח פנימי */
+    margin: 10px; /* מרווח חיצוני */
+    width: 250px; /* רוחב קבוע לכרטיסים */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* צל */
+    color: black; /* צבע טקסט שחור */
+}
+
+    .card h3 {
+        font-size: 1.5em; /* גודל כותרת הכרטיס */
+        margin-bottom: 10px; /* מרווח מתחת לכותרת */
+        color: black; /* צבע טקסט שחור */
+    }
+
+    .card p {
+        font-size: 1em; /* גודל הטקסט בכרטיס */
+        color: black; /* צבע טקסט שחור */
+    }
+
+.info-cards {
+    background-color: #f5f5dc; /* רקע בהיר */
+    padding: 20px; /* ריווח פנימי */
+    text-align: center; /* טקסט ממורכז */
+}
+
+.section-title {
+    font-size: 2em; /* גודל כותרת */
+    margin-bottom: 20px; /* ריווח מתחת לכותרת */
+}
+
+.info-card {
+    background-color: #b2e0d8; /* צבע כרטיסיות טורקיז עדין */
+    border-radius: 10px; /* פינות מעוגלות */
+    padding: 15px; /* ריווח פנימי */
+    margin: 15px; /* ריווח חיצוני */
+    display: inline-block; /* שורות של כרטיסיות */
+    width: calc(40% - 20px); /* גודל הכרטיסיות */
+    vertical-align: top; /* למעלה */
+    height: 200px; /* גובה קבוע */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* צל קל להבלטת הכרטיסיות */
+}
+
+    .info-card h3 {
+        margin-top: 0; /* ללא ריווח למעלה */
+    }
+
+    .info-card p {
+        color: #333; /* צבע טקסט */
+        line-height: 1.5; /* גובה שורה */
+    }
+
+.video-section {
+    text-align: center; /* ממורכז את התוכן */
+    margin: 20px; /* מרווח סביב הסקשן */
+}
+
+.video-title {
+    font-size: 24px; /* גודל גופן של הכותרת */
+    color: #333; /* צבע טקסט */
+    margin-bottom: 15px; /* מרווח בין הכותרת לסרטון */
+}
+.contact-link a {
+    color: #007BFF; /* צבע הקישור */
+    text-decoration: none; /* מסיר את הקו התחתון מהקישור */
+}
+
+    .contact-link a:hover {
+        text-decoration: underline; /* מוסיף קו תחתון כשמעבירים עליו את העכבר */
+    }
+
+
+
+
+
+.image-section {
+    text-align: center;
+    margin: 0; /* מבטל רווחים חיצוניים */
+    padding: 0; /* מבטל רווחים פנימיים */
+}
+
+.image-section-title {
+    margin-bottom: 20px; /* רווח מתחת לכותרת */
+    font-size: 24px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: space-between; /* מפזר את התמונות באופן שווה */
+    width: 100%; /* מבטיח שהמיכל יתפס 100% מרוחב המסך */
+    overflow: hidden; /* חוסם תוכן חורג */
+}
+
+.image-item {
+    width: 33.33%; /* כל תמונה תופסת שליש מרוחב המיכל */
+    height: auto; /* שומר על יחס התמונה */
+}
+
+.pre-flight-preparations {
+    text-align: center; /* מרכז את התוכן */
+    padding: 20px; /* מוסיף רווח פנימי */
+    background-color: #ffe4c4; /* צבע רקע שיתאים */
+}
+
+.main-title {
+    font-size: 3em; /* גודל כותרת */
+    margin-bottom: 20px; /* רווח בין הכותרת לפסקה */
+    color: #292622;
+}
+
+.introduction {
+    
+    font-size: 1.4em; /* גודל טקסט לפסקה */
+    line-height: 1.5; /* רווח בין השורות */
+    margin: 0 auto; /* מרכז את הפסקה */
+    max-width: 800px; /* מגדיר רוחב מקסימלי */
+}
+.introduction {
+    background-color: rgba(255, 255, 255, 0.4); /* לבן עם שקיפות של 80% */
+    padding: 20px; /* רווח פנימי כדי שלא יהיה צמוד מידי */
+   
+}
+
+.travelers-tips {
+    padding: 30px; /* פדינג סביב התוכן */
+    border-radius: 10px; /* פינות מעוגלות */
+    text-align: center; /* מרכז את הטקסט */
+    background-color: #ffe4c4;
+}
+
+.tips-title {
+    font-size: 28px; /* גודל הכותרת */
+    margin-bottom: 20px; /* רווח מתחת לכותרת */
+    color: #333; /* צבע טקסט */
+}
+
+.video-container {
+    display: flex;
+    justify-content: center; /* מרכז את הסרטונים */
+    flex-wrap: wrap;/* מתאם את הסרט
+
+
+
+.tips-title {
+    font-size: 2.5em; /* גודל כותרת */
+    margin-bottom: 20px; /* מרווח מתחת לכותרת */
+    text-align: center;
+}
+
+.tips-container {
+    display: flex;
+    flex-wrap: wrap; /* מתאם את הכרטיסיות למסכים שונים */
+    justify-content: space-around; /* רווח שווה בין הכרטיסיות */
+}
+
+.tip-card {
+    border-radius: 10px; /* פינות מעוגלות */
+    padding: 20px; /* מרווח פנימי */
+    margin: 15px; /* מרווח בין הכרטיסיות */
+    width: calc(45% - 30px); /* רוחב קבוע לכרטיסים */
+    box-shadow: 0 2px 30px #f1d07e; /* הוספת צל לכרטיסים */
+}
+
+    .tip-card h3 {
+        font-size: 1.5em; /* גודל הכותרת בתוך הכרטיס */
+        color: #333; /* צבע טקסט */
+    }
+
+    .tip-card p {
+        font-size: 1em; /* גודל הטקסט */
+        color: #555; /* צבע טקסט */
+    }
+.tips {
+    background-color: #faeed1; /* צבע רקע חדש - לבן מלוכלך */
+    padding: 40px; /* מרווח פנימי */
+    text-align: center; /* מרכז את הכותרת */
+}
+
+.tip-card {
+    text-align: center; /* מרכז את התוכן */
+    background-color: #fee5ae; /* צבע הרקע של הכרטיסייה */
+    padding: 20px; /* מרווח פנימי */
+    border-radius: 10px; /* פינות מעוגלות */
+    margin: 10px; /* רווח בין הכרטיסיות */
+}
+
+.tip-icon {
+    width: 50px; /* רוחב האייקון */
+    height: auto; /* שומר על הפרופורציות של האייקון */
+    margin-bottom: 10px; /* רווח מתחת לאייקון */
+}
+
+
+
+
+
+
+
+
+
+section.about-us {
+    margin-top: 40px; /* מוסיף ריווח מעל כל אזור התוכן */
+    padding: 20px;
+    
+    color: #333;
+    text-align: center;
+}
+
+    .about-us .container {
+        max-width: 600px;
+        margin: 5px auto;
+    }
+
+
+    .about-us p {
+        font-size: 1.1em;
+        line-height: 1.4;
+        margin-bottom: 15px; /* פחות ריווח בין הפסקאות */
+    }
+
+.team {
+    margin-top: 30px;
+}
+
+    .team h2 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .team p {
+        font-size: 1em;
+        line-height: 1.4;
+        color: #666;
+    }
+
+
+.full-width-image {
+    width: 100%; /* גורם לתמונה לכסות את כל רוחב המסך */
+    height: auto; /* גובה התמונה משתנה בהתאם לרוחב */
+    display: block;
+    margin: 20px 0; /* מרווח בין התמונה לתוכן */
+    border-radius: 15px;
+}
+
+
+
+.page-links li {
+    margin: 5px 0;
+}
+
+.page-links ul {
+    list-style-type: none; /* הסרת התבליטים */
+    padding: 0;
+}
+
+.hit-logo {
+    width: 100%; /* גורם לתמונה להתפרס על כל רוחב המסך */
+    max-width: 600px; /* הגבלה על גודל התמונה כך שהיא לא תהיה ענקית מדי */
+    height: auto; /* שומר על יחס הגובה-רוחב */
+    display: block;
+    margin: 0 auto; /* מרכז את התמונה */
+    padding: 20px 0; /* מוסיף ריווח מעל ומתחת לתמונה */
+}
+
+
+
+
+.container {
+    max-width: 1000px;
+    margin: 150px auto;
+    padding: 20px;
+    background-color: #C4A484;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.tab {
+    flex: 1 1 calc(33.333% - 20px);
+    background-color: #faeed1;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+    
+
+    .tab ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+        .tab ul li {
+            margin-bottom: 10px;
+        }
+
+            .tab ul li a {
+                text-decoration: none;
+                color: #0056b3;
+                font-size: 1.1em;
+            }
+
+                .tab ul li a:hover {
+                    text-decoration: underline;
+                }
+
+/* התאמה למסכים קטנים */
+@media (max-width: 768px) {
+    .tab {
+        flex: 1 1 100%;
+    }
+}
+
+
+.contact-form {
+    background-color: #ffffff; /* צבע רקע טופס */
+    padding: 50px; /* הוסף מרווח פנימי */
+    border-radius: 10px; /* גבול מעוגל */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* הוסף צל */
+    max-width: 500px; /* קביעת רוחב מקסימלי */
+    margin: auto; /* מרכז את הטופס */
+}
+
+.contact-form {
+    margin-top: 60px; /* הוסף מרווח עליון כדי להפריד מהסרגל */
+}
+
+.form-field {
+    margin-bottom: 15px; /* הוסף מרווח מתחת לכל שדה */
+}
+
+    .form-field label {
+        display: block; /* כל תווית תהיה בשורה נפרדת */
+        margin-bottom: 5px; /* הוסף מרווח מתחת לתוויות */
+    }
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%; /* הרוחב יהיה 100% של ההורה */
+    padding: 10px; /* הוסף מרווח פנימי */
+    border: 1px solid #ccc; /* גבול לתיבות הקלט */
+    border-radius: 4px; /* גבול מעוגל */
+    box-sizing: border-box; /* כולל גבולות בגובה הכולל */
+}
+
+.submit-button {
+    background-color: #555; /* צבע רקע לכפתור */
+    color: #ffffff; /* צבע טקסט */
+    padding: 10px 20px; /* מרווח פנימי */
+    border: none; /* הסר גבול */
+    border-radius: 5px; /* גבול מעוגל */
+    cursor: pointer; /* שינוי הסמן ל-pointer */
+    font-size: 16px; /* גודל טקסט לכפתור */
+}
+
+    .submit-button:hover {
+        background-color: #3a8a3c; /* צבע רקע כאשר מרחפים על הכפתור */
+    }
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    margin-top: 20px;
+}
+
+.footer-content p {
+    margin: 5px 0;
+}
+
+.footer-nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+    .footer-nav a:hover {
+        text-decoration: underline;
+    }
+.containerb {
+    width: 900px;
+    padding: 20px;
+    background-color: ghostwhite;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    text-align: right; /* יישור הטקסט לימין */
+    margin: 0 auto;
+    margin: 70px auto;
+}
+
+.title {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* כותרות הסעיפים */
+.section-title {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+/* עיצוב הסעיפים */
+.section {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.option-group {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-size: 1em;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* רווח בין כפתור לטקסט */
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: #333;
+}
+
+/* עיצוב השדות והטקסט */
+input[type="text"], textarea, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* עיצוב כפתור שליחה */
+.submit-btn {
+    grid-column: 1 / -1;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: not-allowed;
+    font-size: 1em;
+    text-align: center;
+    opacity: 0.5; /* מצב התחלתי */
+}
+
+    .submit-btn.enabled {
+        cursor: pointer;
+        opacity: 1;
+    }
+
+        .submit-btn.enabled:hover {
+            background-color: #555;
+        }
+
+/* אייקונים של יעדים (מוסתרים כברירת מחדל) */
+.destination-icon {
+    display: none;
+    font-size: 18px;
+    color: #555;
+}
+
+/* עיצוב תמונות תחומי עניין */
+.interest-image {
+    width: 40px; /* ניתן להתאים את הגודל לפי הצורך */
+    height: auto;
+    opacity: 0.5; /* מצב ברירת מחדל של חצי שקיפות */
+    transition: opacity 0.3s ease; /* מעבר חלק */
+}
+
+    .interest-image.highlight {
+        opacity: 1; /* מודגש בעת בחירה */
+    }
+
+/* עיצוב לסיכום ההזמנה */
+#summary {
+    grid-column: 1 / -1;
+    background-color: #eee;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.hidden {
+    display: none;
+}
